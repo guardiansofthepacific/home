@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guardians of the Pacific</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      color: #333;
+      background: #fff;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
+
+    .nav-logo span {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #333;
+      line-height: 1.3;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #3bbfbf; }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero .tagline {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1.25rem;
+      font-weight: 400;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 400;
+      color: #222;
+      line-height: 1.35;
+      margin-bottom: 2rem;
+    }
+
+    .btn-support {
+      display: inline-block;
+      background: #3bbfbf;
+      color: white;
+      padding: 0.8rem 2.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .btn-support:hover { background: #2ea8a8; }
+
+    /* ── TWO ICONS ROW ── */
+    .icons-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 4rem auto 0;
+      padding: 0 2rem 4rem;
+      align-items: start;
+    }
+
+    .icon-block {
+      text-align: center;
+      padding: 1.5rem 1rem 0;
+    }
+
+    .icon-block svg {
+      width: 80px;
+      height: 80px;
+      color: #3bbfbf;
+      stroke: #3bbfbf;
+    }
+
+    .icon-block h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #333;
+      margin: 1rem 0 0.6rem;
+    }
+
+    .icon-block p {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.65;
+      text-align: left;
+    }
+
+    .icon-block ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      margin-top: 0.5rem;
+    }
+
+    .icon-block ul li {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .icon-block ul li.sub {
+      padding-left: 1.2rem;
+    }
+
+    .icon-block ul li.sub::before {
+      content: '• ';
+    }
+
+    /* ── PROJECTS ── */
+    .projects-section {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .projects-section h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 0.4rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .projects-grid .proj-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* bottom row: 2 images centred */
+    .projects-grid .row2 {
+      grid-column: span 1;
+    }
+
+    /* ── STAY IN TOUCH ── */
+    .stay-in-touch {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .stay-in-touch h2 {
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #222;
+      margin-bottom: 0.6rem;
+    }
+
+    .stay-in-touch p {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 1.5rem;
+    }
+
+    .email-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    .email-form input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .email-form input:focus { border-color: #3bbfbf; }
+
+    .email-form button {
+      background: #3bbfbf;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0 4px 4px 0;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .email-form button:hover { background: #2ea8a8; }
+
+    /* ── MAP PLACEHOLDER ── */
+    .map-placeholder {
+      background: #e8e8e8;
+      height: 200px;
+      margin: 2.5rem 0 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+      border-top: 1px solid #eee;
+    }
+
+    .footer-instagram {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-instagram svg {
+      width: 26px;
+      height: 26px;
+      color: #e1306c;
+      stroke: #e1306c;
+    }
+
+    footer .footer-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #333;
+      margin-bottom: 0.4rem;
+    }
+
+    footer .footer-copy {
+      font-size: 0.82rem;
+      color: #888;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .icons-row { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+      nav { flex-wrap: wrap; gap: 1rem; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="gotp.jpg" alt="Guardians of the Pacific" />
+    <span>Guardians of the Pacific</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#projects">Our Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <p class="tagline">Together we can.</p>
+  <h1>Supporting Fiji through poverty alleviation, education and individual welfare.</h1>
+  <a href="#contact" class="btn-support">Support Us</a>
+</div>
+
+<!-- ── ICONS + TEXT ── -->
+<div class="icons-row">
+  <!-- People icon + Our Team -->
+  <div class="icon-block">
+    <svg viewBox="0 0 100 80" fill="none" stroke="#3bbfbf" stroke-width="3" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="18" r="8"/>
+      <path d="M4 50 Q4 34 20 34 Q36 34 36 50"/>
+      <circle cx="50" cy="18" r="8"/>
+      <path d="M34 50 Q34 34 50 34 Q66 34 66 50"/>
+      <circle cx="80" cy="18" r="8"/>
+      <path d="M64 50 Q64 34 80 34 Q96 34 96 50"/>
+      <path d="M20 26 L10 20 M20 26 L30 20" stroke-linecap="round"/>
+      <path d="M50 26 L40 20 M50 26 L60 20" stroke-linecap="round"/>
+      <path d="M80 26 L70 20 M80 26 L90 20" stroke-linecap="round"/>
+    </svg>
+    <h3>Our Team</h3>
+    <p>A bunch of amazing people that want to make a difference to the lives of many who are less priviledged than most.</p>
+  </div>
+
+  <!-- Heart / hands icon + Our Mission -->
+  <div class="icon-block">
+    <svg viewBox="0 0 80 80" fill="none" stroke="#3bbfbf" stroke-width="2.5" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 22 C40 22 28 12 20 20 C12 28 20 36 40 50 C60 36 68 28 60 20 C52 12 40 22 40 22Z" stroke-linejoin="round"/>
+      <path d="M16 56 Q16 48 24 48 L40 48 L56 48 Q64 48 64 56 L64 66 Q52 72 40 72 Q28 72 16 66 Z" stroke-linejoin="round"/>
+    </svg>
+    <h3>Our Mission</h3>
+    <ul>
+      <li>A. To Create a platform to address areas of need prepare kids for life</li>
+      <li>b. Purpose &amp; development</li>
+      <li>c. Personal development</li>
+      <li class="sub">i. Community</li>
+      <li class="sub">ii. Mental Health</li>
+      <li class="sub">iii. Mentor towards industry</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── PROJECTS ── -->
+<div class="projects-section" id="projects">
+  <h2>Our Projects</h2>
+  <div class="projects-grid">
+    <!-- Row 1: 3 images -->
+    <img class="proj-img" src="proj1.jpg" alt="People holding hands around the globe" onerror="this.style.background='#ddd'; this.style.minHeight='120px'" />
+    <img class="proj-img" src="proj2.jpg" alt="Child studying" onerror="this.style.background='#ccc'; this.style.minHeight='120px'" />
+    <img class="proj-img" src="proj3.jpg" alt="Charity" onerror="this.style.background='#bbb'; this.style.minHeight='120px'" />
+    <!-- Row 2: 2 images (left-aligned) -->
+    <img class="proj-img row2" src="proj4.jpg" alt="Family in hands" onerror="this.style.background='#d4d4d4'; this.style.minHeight='120px'" />
+    <img class="proj-img row2" src="proj5.jpg" alt="Candle light" onerror="this.style.background='#c8c8c8'; this.style.minHeight='120px'" />
+    <div></div>
+  </div>
+</div>
+
+<!-- ── STAY IN TOUCH ── -->
+<div class="stay-in-touch" id="contact">
+  <h2>Stay in Touch</h2>
+  <p>Sign up to hear from us about specials, sales, and events.</p>
+  <div class="email-form">
+    <input type="email" placeholder="Email Address" />
+    <button type="button">Sign up</button>
+  </div>
+</div>
+
+<!-- ── MAP ── -->
+<div class="map-placeholder"></div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-instagram">
+    <!-- Instagram icon -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="#e1306c" stroke="none"/>
+    </svg>
+  </div>
+  <p class="footer-name">Guardians of the Pacific</p>
+  <p class="footer-copy">Copyright © 2021 Guardians of the Pacific - All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
